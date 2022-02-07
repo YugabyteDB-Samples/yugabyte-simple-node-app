@@ -7,7 +7,7 @@ If you use a different type of deployment, then update the `sample-app.js` file 
 
 ## Prerequisite
 
-* The latest version of Node.js
+* The latest version of Node.js.
 * Command line tool or your favourite IDE, such as Visual Studio Code.
 
 ## Start Yugabyte Cloud Cluster
@@ -31,10 +31,11 @@ Open the `sample-app.js` file and edit the following configuration parameters:
 * `port` - the port number of the instance (the default is `5433`).
 * `user` - the username for your instance.
 * `password` - the database password.
-* `sslMode` - the SSL mode. Set to `verify-full` for Yugabyte Cloud deployments.
-* `sslRootCert` - a full path to your CA root cert (for example, `/Users/dmagda/certificates/root.crt`) 
+* `ssl.ca` - a full path to your CA root cert. Replace the `path_to_your_root_certificate` placeholder with a path to your certificate (for example, `/Users/dmagda/certificates/root.crt`). 
 
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
+
+![image](resources/cloud-app-settings.png)
 
 ## Run the Application
 
@@ -55,8 +56,15 @@ Upon successful execution, you will see output similar to the following:
 
 ```bash
 >>>> Connecting to YugabyteDB!
->>>> Successfully connected to YugabyteDB!
-...
+>>>> Connected to YugabyteDB!
+>>>> Successfully created table DemoAccount.
+>>>> Selecting accounts:
+name = Jessica, age = 28, country = USA, balance = 10000
+name = John, age = 28, country = Canada, balance = 9000
+>>>> Transferred 800 between accounts.
+>>>> Selecting accounts:
+name = Jessica, age = 28, country = USA, balance = 9200
+name = John, age = 28, country = Canada, balance = 9800
 ```
 
 ## Explore Application Logic
@@ -64,3 +72,14 @@ Upon successful execution, you will see output similar to the following:
 Congrats! You've successfully executed a simple Node.js app that works with Yugabyte Cloud.
 
 Now, explore the source code of `sample-app.js`:
+1. `connect` function - establishes a connection with your cloud instance via the node-postgres driver.
+3. `createDatabase` function - creates a table and populates it with sample data.
+4. `selectAccounts` function - queries the data with SQL `SELECT` statements.
+5. `transferMoneyBetweenAccounts` function - updates records consistently with distributed transactions.
+
+## Questions or Issues?
+
+Having issues running this application or want to learn more from Yugabyte experts?
+
+Send a note to [our Slack channel](https://join.slack.com/t/yugabyte-db/shared_invite/zt-xbd652e9-3tN0N7UG0eLpsace4t1d2A),
+or raise a question on StackOverflow and tag the question with `yugabytedb`!
