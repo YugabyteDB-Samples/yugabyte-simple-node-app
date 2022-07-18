@@ -124,7 +124,7 @@ async.series([
             if (err.code == 40001) {
                 console.error(
                     `The operation is aborted due to a concurrent transaction that is modifying the same set of rows.
-                    Consider adding retry logic for production-grade applications.`);
+                    Consider adding retry logic or using the pessimistic locking.`);
             }
 
             console.error(err);
