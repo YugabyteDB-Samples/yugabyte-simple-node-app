@@ -5,15 +5,16 @@ const { callbackify } = require('util');
 const { rows } = require('pg/lib/defaults');
 
 const config = {
-    host: '',
+    host: '127.0.0.1',
     port: '5433',
     database: 'yugabyte',
-    user: '',
-    password: '',
-    ssl: {
-        rejectUnauthorized: true,
-        ca: fs.readFileSync('path_to_your_root_certificate').toString()
-    },
+    user: 'yugabyte',
+    password: 'yugabyte',
+    // Uncomment and initialize the SSL settings for YugabyteDB Managed and other secured types of deployment
+    // ssl: {
+    //     rejectUnauthorized: true,
+    //     ca: fs.readFileSync('path_to_your_root_certificate').toString()
+    // },
     connectionTimeoutMillis: 5000
 };
 
@@ -53,7 +54,7 @@ async function createDatabase(callbackHadler) {
         stmt = `INSERT INTO DemoAccount VALUES
             (1, 'Jessica', 28, 'USA', 10000),
             (2, 'John', 28, 'Canada', 9000)`;
-        
+
         await client.query(stmt);
 
         console.log('>>>> Successfully created table DemoAccount.');
@@ -116,7 +117,7 @@ async.series([
     function (callbackHadler) {
         selectAccounts(callbackHadler);
     }
-    ], 
+],
     function (err) {
         if (err) {
             // Applies to logic of the transferMoneyBetweenAccounts method
@@ -124,8 +125,8 @@ async.series([
                 console.error(
                     `The operation is aborted due to a concurrent transaction that is modifying the same set of rows.
                     Consider adding retry logic for production-grade applications.`);
-            } 
-            
+            }
+
             console.error(err);
         }
         client.end();
