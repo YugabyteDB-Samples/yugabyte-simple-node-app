@@ -2,7 +2,7 @@
 
 This application connects to your YugabyteDB instance via the 
 [node-postgres](https://node-postgres.com) module and performs basic SQL 
-operations. The instructions below are provided for [YugabyteDB Managed](https://cloud.yugabyte.com/) deployments. 
+operations. The instructions below are provided for [YugabyteDB Aeon](https://cloud.yugabyte.com/) deployments. 
 If you use a different type of deployment, then update the `sample-app.js` file with proper connection parameters.
 
 ## Prerequisites
@@ -10,9 +10,9 @@ If you use a different type of deployment, then update the `sample-app.js` file 
 * The latest version of Node.js.
 * Command line tool or your favourite IDE, such as Visual Studio Code.
 
-## Start YugabyteDB Managed Cluster
+## Start YugabyteDB Aeon Cluster
 
-* [Start YugabyteDB Managed](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-quickstart/qs-add/) instance. You can use
+* [Start YugabyteDB Aeon](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-quickstart/qs-add/) instance. You can use
 the free tier at no cost.
 * Add an IP address of your machine/laptop to the [IP allow list](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-secure-clusters/add-connections/#manage-ip-allow-lists)
 
@@ -21,7 +21,7 @@ the free tier at no cost.
 Clone the repository and change dirs into it:
 
 ```bash
-git clone https://github.com/yugabyte/yugabyte-simple-node-app && cd yugabyte-simple-node-app
+git clone https://github.com/YugabyteDB-Samples/yugabyte-simple-node-app.git && cd yugabyte-simple-node-app
 ```
 
 ## Provide Cluster Connection Parameters
@@ -33,7 +33,7 @@ Open the `sample-app.js` file and edit the following configuration parameters:
 * `password` - the database password.
 * `ssl.ca` - a full path to your CA root cert. Replace the `path_to_your_root_certificate` placeholder with a path to your certificate (for example, `/Users/dmagda/certificates/root.crt`). 
 
-Note, you can easily find all the settings on the YugabyteDB Managed dashboard:
+Note, you can easily find all the settings on the YugabyteDB Aeon dashboard:
 
 ![image](resources/cloud-app-settings.png)
 
